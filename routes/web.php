@@ -5,16 +5,21 @@ use App\Http\Controllers\ProdiController;
 use App\Http\Controllers\mhsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\profilController;
+use App\Http\Controllers\resmhsController;
 
 // Route::get('/', [HomeController::class, 'index'])->name('home');
-// Route::get('/mahasiswa', [MahasiswaController::class, 'index'])->name('mahasiswa');
+
 // Route::get('/prodi', [ProdiController::class, 'index'])->name('prodi');
 // Route::get('/mhs', [mhsController::class, 'index'])->name('mhs');
 
 // Route::get('/mhs/show', [mhsController::class, 'show'])->name('mhs-show');
 
 // Route::get('/mhs/perulangan', [mhsController::class, 'perulangan'])->name('mhs-perulangan');
-
+Route::get('/mahasiswa', [MahasiswaController::class, 'index']);
+Route::get('/profil', [profilController::class, 'index']);
+Route::get('/prodi', [ProdiController::class, 'index']);
+Route::resource('resmhs',resmhsController::class);
 
 Route::get('/',function () {
     $title = "WebRifqy.Com";
@@ -31,42 +36,49 @@ Route::get('/home',function () {
 
 });
 
-Route::get('/profil', function () {
-    return view('profil');
-});
+// Route::get('/profil', function () {
+//     return view('profil');
+// });
 
-Route::get('/mahasiswa', function () {
-    $mahasiswa = [
-        ['nama' => 'Rifqy', 'nim' => '2307046', 'prodi' => 'Sistem Informasi Kota Cerdas'],
-        ['nama' => 'Aliep', 'nim' => '2307031', 'prodi' => 'Sistem Informasi Kota Cerdas'],
-        ['nama' => 'Rio', 'nim' => '2307082', 'prodi' => 'Sistem Informasi Kota Cerdas'],
-        ['nama' => 'Esa', 'nim' => '2307089', 'prodi' => 'Sistem Informasi Kota Cerdas'],
-        ['nama' => 'Deco', 'nim' => '2307036', 'prodi' => 'Sistem Informasi Kota Cerdas'],
-    ];
-    return view('mahasiswa', compact('mahasiswa'));
-});
+// Route::get('/mahasiswa',function () {
+//     $title = "WebRifqy.Com";
+//     $slug = "home";
+//     $konten = "Ini adalah data mahasiswa dari conrtroller";
+//     return view('konten.home', compact('title','slug','konten'));
 
-Route::get('/prodi', function () {
-    $prodi = [
-        ['kode_prodi' => 'D3TI',
-            'nama_prodi' => 'Teknik Informatika'],
-            ['kode_prodi' => 'D3TM',
-            'nama_prodi' => 'Teknik Mesin'],
-            ['kode_prodi' => 'D3TPTU',
-            'nama_prodi' => 'Teknik Pendingin dan Tata Udara'],
-            ['kode_prodi' => 'D3KP',
-            'nama_prodi' => 'Keperawatan'],
-            ['kode_prodi' => 'D4SIKC',
-            'nama_prodi' => 'Sistem Informasi Kota Cerdas'],
-            ['kode_prodi' => 'D4RPL',
-            'nama_prodi' => 'Rekayasa Perangkat Lunak'],
-            ['kode_prodi' => 'D4TRIK',
-            'nama_prodi' => 'Teknologi Rekayasa Instrumentasi dan Kontrol'],
-            ['kode_prodi' => 'D4PM',
-            'nama_prodi' => 'Perancangan Manufaktur']
-    ];
-    return view('prodi', compact('prodi'));
-});
+// });
+// Route::get('/mahasiswa', function () {
+//     $mahasiswa = [
+//         ['nama' => 'Rifqy', 'nim' => '2307046', 'prodi' => 'Sistem Informasi Kota Cerdas'],
+//         ['nama' => 'Aliep', 'nim' => '2307031', 'prodi' => 'Sistem Informasi Kota Cerdas'],
+//         ['nama' => 'Rio', 'nim' => '2307082', 'prodi' => 'Sistem Informasi Kota Cerdas'],
+//         ['nama' => 'Esa', 'nim' => '2307089', 'prodi' => 'Sistem Informasi Kota Cerdas'],
+//         ['nama' => 'Deco', 'nim' => '2307036', 'prodi' => 'Sistem Informasi Kota Cerdas'],
+//     ];
+//     return view('mahasiswa', compact('mahasiswa'));
+// });
+
+// Route::get('/prodi', function () {
+//     $prodi = [
+//         ['kode_prodi' => 'D3TI',
+//             'nama_prodi' => 'Teknik Informatika'],
+//             ['kode_prodi' => 'D3TM',
+//             'nama_prodi' => 'Teknik Mesin'],
+//             ['kode_prodi' => 'D3TPTU',
+//             'nama_prodi' => 'Teknik Pendingin dan Tata Udara'],
+//             ['kode_prodi' => 'D3KP',
+//             'nama_prodi' => 'Keperawatan'],
+//             ['kode_prodi' => 'D4SIKC',
+//             'nama_prodi' => 'Sistem Informasi Kota Cerdas'],
+//             ['kode_prodi' => 'D4RPL',
+//             'nama_prodi' => 'Rekayasa Perangkat Lunak'],
+//             ['kode_prodi' => 'D4TRIK',
+//             'nama_prodi' => 'Teknologi Rekayasa Instrumentasi dan Kontrol'],
+//             ['kode_prodi' => 'D4PM',
+//             'nama_prodi' => 'Perancangan Manufaktur']
+//     ];
+//     return view('prodi', compact('prodi'));
+// });
 
 
 
