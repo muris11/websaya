@@ -15,12 +15,16 @@ class mhsTableSeeder extends Seeder
     public function run(): void
     {
         DB::table('mhs')->insert(array(
-            ['nim' => '2307046',
-            'nama' => 'Rifqy',
+            ['nim' => '2307081',
+            'nama' => 'Rio',
             'prodi' => 'D4SIKC',
             'angkatan' => '2024'],
-            ['nim' => '2307036',
-            'nama' => 'Deco',
+            ['nim' => '2307031',
+            'nama' => 'Aliep',
+            'prodi' => 'D4SIKC',
+            'angkatan' => '2024'],
+            ['nim' => '2307054',
+            'nama' => 'Wira',
             'prodi' => 'D4SIKC',
             'angkatan' => '2024']
         ));
