@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class resmhsController extends Controller
 {
@@ -14,17 +15,26 @@ class resmhsController extends Controller
         $title = "Mahasiswa WebRifqy.Com";
         $slug = "mahasiswa";
         $mhs = "Rifqy";
-        $dataMhs = $this->show();
+        $dataMhs = DB::table('mhs')
+        ->join('prodi','mhs.prodi','=','prodi.kode_prodi')
+        ->get();
         return view('resmhs.index',
-                compact('mhs','title','slug','dataMhs'));
-    }
+        compact('mhs','title','slug','dataMhs'));
+        }
 
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        //
+        DB::table('mhs')
+        ->insert([
+            'nim' => 2307032,
+            'nama' => 'Anto',
+            'prodi' => 'D3TI',
+            'angkatan' => 2022
+        ]);
+        echo "Data mhs berhasil ditambahkan";
     }
 
     /**

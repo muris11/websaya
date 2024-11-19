@@ -19,7 +19,11 @@ use App\Http\Controllers\resmhsController;
 Route::get('/mahasiswa', [MahasiswaController::class, 'index']);
 Route::get('/profil', [profilController::class, 'index']);
 Route::get('/prodi', [ProdiController::class, 'index']);
-Route::resource('resmhs',resmhsController::class);
+Route::get('/resmhs',[resmhsController::class,'index']);
+Route::get('/mahasiswa/create',[mahasiswaController::class,'create']);
+Route::get('/mahasiswa/update',[mahasiswaController::class,'update']);
+Route::get('/mahasiswa/destroy',[mahasiswaController::class,'destroy']);
+
 
 Route::get('/',function () {
     $title = "WebRifqy.Com";
@@ -35,6 +39,7 @@ Route::get('/home',function () {
     return view('konten.home', compact('title','slug','konten'));
 
 });
+
 
 // Route::get('/profil', function () {
 //     return view('profil');
