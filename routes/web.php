@@ -24,6 +24,13 @@ Route::get('/mahasiswa/create',[mahasiswaController::class,'create']);
 Route::get('/mahasiswa/update',[mahasiswaController::class,'update']);
 Route::get('/mahasiswa/destroy',[mahasiswaController::class,'destroy']);
 
+Route::get('/profil/create',[profilController::class,'create']);
+Route::get('/profil/update',[profilController::class,'update']);
+Route::get('/profil/destroy',[profilController::class,'destroy']);
+
+Route::get('/prodi/create',[prodiController::class,'create']);
+Route::get('/prodi/update',[prodiController::class,'update']);
+Route::get('/prodi/destroy',[prodiController::class,'destroy']);
 
 Route::get('/',function () {
     $title = "WebRifqy.Com";

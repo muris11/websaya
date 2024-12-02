@@ -3,31 +3,40 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class prodiController extends Controller
 {
-    public function index()
-    {
-        $slug = 'Profil';
-        $title = "Prodi Polindra";
-        $prodi = [
-        ['kode_prodi' => 'D3TI',
-        'nama_prodi' => 'Teknik Informatika'],
-        ['kode_prodi' => 'D3TM',
-        'nama_prodi' => 'Teknik Mesin'],
-        ['kode_prodi' => 'D3TPTU',
-        'nama_prodi' => 'Teknik Pendingin dan Tata Udara'],
-        ['kode_prodi' => 'D3KP',
-        'nama_prodi' => 'Keperawatan'],
-        ['kode_prodi' => 'D4SIKC',
-        'nama_prodi' => 'Sistem Informasi Kota Cerdas'],
-        ['kode_prodi' => 'D4RPL',
-        'nama_prodi' => 'Rekayasa Perangkat Lunak'],
-        ['kode_prodi' => 'D4TRIK',
-        'nama_prodi' => 'eknologi Rekayasa Instrumentasi dan Kontrol'],
-        ['kode_prodi' => 'D4PM',
-        'nama_prodi' => 'Perancangan Manufaktur']
-                ];
-        return view('konten.prodi', compact('slug', 'prodi', 'title'));
+    public function index(){
+        $slug = 'Prodi';
+        $title = "Prodi Mahasiswa";
+        $dataProdi = DB::table('prodi')->get();
+        return view('konten.prodi', 
+        compact('title', 'slug', 'dataProdi'));
+        
     }
+
+    public function create(){
+        DB::table('prodi')
+                ->insert([
+                    'kode_prodi' => 'D4IKM',
+                    'nama_prodi' => 'Ilmu Komputer',
+                ]);
+                echo "Data prodi berhasil di tambahkan";
+    }
+    public function update(){
+        DB::table('prodi')
+        ->where('kode_prodi' , 'D4TRIK')
+        ->update([
+            'nama_prodi' => 'Teknologi Rekayasa Instrumentasi dan Kontrol',
+        ]);
+        echo "Data prodi D4TRIK Berhasil di perbarui";
+    }
+    public function destroy()
+            {
+            DB::table('prodi')
+            ->where('kode_prodi' , 'D4IKM')
+            ->delete();
+            echo "Data prodi D4IKM berhasil di hapus";
+        }
 }

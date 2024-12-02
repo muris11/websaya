@@ -15,16 +15,39 @@ class mahasiswaController extends Controller
         $dataMhs = DB::table('mhs')
         ->join('prodi','mhs.prodi','=','prodi.kode_prodi')
         ->get();
-        return view('resmhs.index',
+        return view('konten.mahasiswa',
         compact('mhs','title','slug','dataMhs'));
+        }
+
+        public function create(){
+            DB::table('mhs')
+            ->insert([
+                'nim' => 2307038,
+                'nama' => 'Fajri',
+                'prodi' => 'D4SIKC',
+                'angkatan' => 2023
+            ]);
+            echo "Data Mahasiswa Berhasil Ditambahkan";
+        }
+
+        public function update(){
+            DB::table('mhs')
+            ->where('nim' , 2307038)
+            ->update([
+                'nama' => 'Fajri AG',
+                'prodi' => 'D4SIKC',
+                'angkatan' => 2023
+            ]);
+            echo "Data Mahasiswa 2307038 Berhasil di perbarui";
         }
 
         public function destroy()
             {
             DB::table('mhs')
-            ->where('nim',2307032)
+            ->where('nim',2307038)
             ->delete();
-            echo "Data mhs 2307032 berhasil di hapus";
+            echo "Data Mahasiswa 2307038 berhasil di hapus";
         }
+
 }
 
