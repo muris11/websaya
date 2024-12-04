@@ -2,41 +2,60 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\prodi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
 
 class prodiController extends Controller
 {
     public function index(){
-        $slug = 'Prodi';
+        $slug = 'Progam Studi WebSaya.Com';
         $title = "Prodi Mahasiswa";
-        $dataProdi = DB::table('prodi')->get();
+        $mhs = "Rifqy";
+        $dataProdi = prodi::all();
         return view('konten.prodi', 
-        compact('title', 'slug', 'dataProdi'));
+        compact('mhs', 'title', 'slug', 'dataProdi'));
         
     }
 
     public function create(){
-        DB::table('prodi')
-                ->insert([
-                    'kode_prodi' => 'D4IKM',
-                    'nama_prodi' => 'Ilmu Komputer',
-                ]);
-                echo "Data prodi berhasil di tambahkan";
+     //Eloquent ORM biasa
+     $dataProdi = new prodi();
+     $dataProdi->kode_prodi = 'D4 SIKC';
+     $dataProdi->nama_prodi = 'Sistem Informasi Kota Cerdas';
+     $dataProdi->created_at = now();
+     $dataProdi->updated_at = now();
+     $dataProdi->save();
+
+     //Eloquent ORM Mass Aassignment
+     prodi::insert(array(
+        ['kode_prodi'=>'D4RPL',
+        'nama_prodi'=>'Rekayasa Perangkat Lunak',
+        'created_at'=>now(),
+        'updated_at'=>now()
+        ],
+        ['kode_prodi'=>'D3TI',
+        'nama_prodi'=>'Teknik Informatika',
+        'created_at'=>now(),
+        'updated_at'=>now()
+        ],
+     ));
+     echo "Data Prodi Berhasil Disimpan,
+     <a href='/prodi'>Kembali</a>";
     }
+
     public function update(){
-        DB::table('prodi')
-        ->where('kode_prodi' , 'D4TRIK')
-        ->update([
-            'nama_prodi' => 'Teknologi Rekayasa Instrumentasi dan Kontrol',
+        prodi::where('kode_prodi', '=', 'D3TI')->update([
+            'nama_prodi' => 'Teknik Informatikaaaaaa'
         ]);
-        echo "Data prodi D4TRIK Berhasil di perbarui";
+        echo "Data prodi D3TI Berhasil di perbarui,
+        <a href='/prodi'>Kembali</a>";
     }
+
     public function destroy()
             {
-            DB::table('prodi')
-            ->where('kode_prodi' , 'D4IKM')
-            ->delete();
-            echo "Data prodi D4IKM berhasil di hapus";
-        }
+                prodi::where('kode_prodi','D3TI')->delete();
+                return Redirect('/prodi');
+            }
 }

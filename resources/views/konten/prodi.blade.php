@@ -1,7 +1,7 @@
 @extends('layouts.main')
 @section('title', $title)
 @section('content')
-    <h2>Data Prodi</h2>
+    <h2>Nama: {{ $mhs }}</h2>
     <table border="1" class="table">
         <tr>
             <th>No</th>

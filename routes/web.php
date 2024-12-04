@@ -16,21 +16,24 @@ use App\Http\Controllers\resmhsController;
 // Route::get('/mhs/show', [mhsController::class, 'show'])->name('mhs-show');
 
 // Route::get('/mhs/perulangan', [mhsController::class, 'perulangan'])->name('mhs-perulangan');
-Route::get('/mahasiswa', [MahasiswaController::class, 'index']);
+
 Route::get('/profil', [profilController::class, 'index']);
-Route::get('/prodi', [ProdiController::class, 'index']);
-Route::get('/resmhs',[resmhsController::class,'index']);
-Route::get('/mahasiswa/create',[mahasiswaController::class,'create']);
-Route::get('/mahasiswa/update',[mahasiswaController::class,'update']);
-Route::get('/mahasiswa/destroy',[mahasiswaController::class,'destroy']);
+// Route::get('/mahasiswa', [MahasiswaController::class, 'index']);
+// Route::get('/resmhs',[resmhsController::class,'index']);
+// Route::get('/mahasiswa/create',[mahasiswaController::class,'create']);
+// Route::get('/mahasiswa/update',[mahasiswaController::class,'update']);
+// Route::get('/mahasiswa/destroy',[mahasiswaController::class,'destroy']);
 
 Route::get('/profil/create',[profilController::class,'create']);
 Route::get('/profil/update',[profilController::class,'update']);
 Route::get('/profil/destroy',[profilController::class,'destroy']);
 
+Route::get('/prodi', [ProdiController::class, 'index']);
 Route::get('/prodi/create',[prodiController::class,'create']);
 Route::get('/prodi/update',[prodiController::class,'update']);
 Route::get('/prodi/destroy',[prodiController::class,'destroy']);
+
+Route::resource('mahasiswa', MahasiswaController::class);
 
 Route::get('/',function () {
     $title = "WebRifqy.Com";
